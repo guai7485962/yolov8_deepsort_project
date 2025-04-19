@@ -1,0 +1,8 @@
+train:
+  - ./data/object_detection_traing/train
+val:
+  - ./data/object_detection_traing/valid
+test:
+  - ./data/object_detection_traing/test
+nc: 1
+names: [fish]

@@ -1,0 +1,5 @@
+classes = 1
+train = data/YoloV4/train.txt
+valid = data/YoloV4/valid.txt
+names = data/YoloV4/cfg/obj.names
+backup = backup/
