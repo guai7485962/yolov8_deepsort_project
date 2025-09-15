@@ -1,19 +1,27 @@
-✅ 開始使用
-我們建議在 Google Colab 上運行此專案。您無需進行任何額外的安裝，只需依照以下步驟操作：
+# 使用 YOLOv4、YOLOv8 與 DeepSORT 進行魚群行為追蹤
 
-🔹 1. 開啟 Google Colab
-前往 Google Colab 並開啟任何一個 .ipynb 檔案（例如 yolov8_train.ipynb 或 distance_research.ipynb）。
+本專案使用 YOLOv4 與 YOLOv8 進行魚群偵測，並結合 DeepSORT 進行多目標追蹤。專案會對魚群進行行為分析（包含平均移動距離、中心點位移、魚群密度變化）。所有模型的訓練與分析皆在 Google Colab 中完成，且完整的資料集已公開於 Zenodo，以確保研究的可重現性。
 
-🔹 2. 下載並解壓縮資料集 (約 7.6 GB)
+---
+
+## ✅ 開始使用
+
+我們建議在 **Google Colab** 上運行此專案。您無需進行任何額外的安裝，只需依照以下步驟操作：
+
+### 🔹 1. 開啟 Google Colab
+
+前往 [Google Colab](https://colab.research.google.com/) 並開啟任何一個 `.ipynb` 檔案（例如 `yolov8_train.ipynb` 或 `distance_research.ipynb`）。
+
+### 🔹 2. 下載並解壓縮資料集 (約 7.6 GB)
+
 在第一個程式碼儲存格中執行以下指令：
 
-Python
-
-!wget -O yolov8_deepsort_tracking.zip "https://zenodo.org/api/records/15250169/files-archive"
+```python
+!wget -O yolov8_deepsort_tracking.zip "[https://zenodo.org/api/records/15250169/files-archive](https://zenodo.org/api/records/15250169/files-archive)"
 !unzip yolov8_deepsort_tracking.zip -d ./project
 %cd ./project/yolov8_deepsort_tracking
+
 ✅ 資料夾結構與模組概覽
-Bash
 
 yolov8_deepsort_tracking/
 ├── data/
@@ -42,6 +50,7 @@ yolov8_deepsort_tracking/
 │       ├── research_output_txt/     ← 四種分析指標的逐幀輸出
 │       ├── research_output_chart_img/ ← 每項分析的折線圖
 │       └── summary_report.docx      ← 分析的摘要報告
+
 📊 模型訓練與分析流程
 1️⃣ YOLOv4 訓練與測試
 📘 training/yolov4/Yolov4_train_test.ipynb
