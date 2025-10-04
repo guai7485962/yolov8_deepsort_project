@@ -1,7 +1,6 @@
+# Fish Behavior Tracking with YOLOv4, YOLOv5, YOLOv8, and DeepSORT
 
-# Fish Behavior Tracking with YOLOv4, YOLOv8, and DeepSORT
-
-This project uses YOLOv4 and YOLOv8 for fish detection, combined with DeepSORT for multi-object tracking. It performs behavioral analysis on fish groups (including average movement distance, center displacement, and density variation). All model training and analysis were conducted in Google Colab, and the complete dataset is publicly available on Zenodo to ensure reproducibility.
+This project uses YOLOv4, YOLOv5, and YOLOv8 for fish detection, combined with DeepSORT for multi-object tracking. It performs behavioral analysis on fish groups (including average movement distance, center displacement, group density, etc.).
 
 ---
 
@@ -40,6 +39,9 @@ yolov8_deepsort_tracking/
 │   ├── yolov4/
 │   │   ├── Yolov4_train_test.ipynb
 │   │   └── YOLOv4 config files (.cfg, .data, .names) and trained weights
+│   ├── yolov5/                ← NEW: Contains Yolov5 training files and weights
+│   │   ├── Yolov5_train.ipynb
+│   │   └── Yolov5_weights.pt
 │   └── yolov8/
 │       ├── yolov8_train.ipynb
 │       ├── Yolov8_test.ipynb
@@ -54,8 +56,18 @@ yolov8_deepsort_tracking/
 │   └── result/
 │       ├── research_output_txt/     ← Per-frame output of four analysis metrics
 │       ├── research_output_chart_img/ ← Line charts for each analysis
-│       └── summary_report.docx      ← Summary report of analysis
+│       ├── summary_report.docx      ← Summary report of analysis
+│       └── traditional_indicator_research/   ← NEW: Holds traditional indicator research outputs
+│           ├── output_image/        ← Contains images for Average NND, speed variance, group polarity
+│           └── output_txt/          ← Contains text results for these three indicators
 ```
+
+---
+
+## 🆕 Changelog / 更新紀錄
+
+- Added `training/yolov5/` folder, including Yolov5 training files and weight files for fish detection model training and testing.
+- Added `tracking_analysis/result/traditional_indicator_research/output_image` and `output_txt` folders, storing images and text research results for three traditional indicators: Average NND, speed variance, and group polarity.
 
 ---
 
@@ -65,11 +77,20 @@ yolov8_deepsort_tracking/
 
 ### 📘 `training/yolov4/Yolov4_train_test.ipynb`
 
-**Purpose**: Used for performance comparison against YOLOv8 results.
+**Purpose**: Used for performance comparison against YOLOv8 and YOLOv5 results.
 
 ---
 
-## 2️⃣ YOLOv8 Training and Testing
+## 2️⃣ YOLOv5 Training and Testing
+
+### 📘 `training/yolov5/Yolov5_train.ipynb`
+
+**Output model**: `Yolov5_weights.pt`  
+**Purpose**: Provides additional detection model for comparative analysis in fish tracking and behavior research.
+
+---
+
+## 3️⃣ YOLOv8 Training and Testing
 
 ### 📘 `training/yolov8/yolov8_train.ipynb`  
 ### 📘 `training/yolov8/Yolov8_test.ipynb`
@@ -79,14 +100,14 @@ yolov8_deepsort_tracking/
 
 ---
 
-## 3️⃣ Tracking and Fish Group Behavior Analysis
+## 4️⃣ Tracking and Fish Group Behavior Analysis
 
 ### 📘 `tracking_analysis/distance_research.ipynb`
 
 **Input**: 30 videos listed in `video_data.csv`  
 **Analysis steps**:
 
-📌 Detect fish using YOLOv8 and track using DeepSORT  
+📌 Detect fish using YOLOv8/YOLOv5 and track using DeepSORT  
 📌 Output per-frame bounding boxes and tracked video files  
 📌 Compute the following four behavior metrics:
 
@@ -94,6 +115,7 @@ yolov8_deepsort_tracking/
 - `compute_center_movement`: Displacement of group center  
 - `compute_density`: Fish group density over time  
 - `generate_report_word`: Auto-generate a summary `.docx` report
+- Traditional indicators (Average NND, speed variance, group polarity) outputs are stored under `tracking_analysis/result/traditional_indicator_research/`
 
 ---
 
